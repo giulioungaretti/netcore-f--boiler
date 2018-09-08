@@ -1,3 +1,37 @@
+# Fix type providers on net core with mono yolo!
+Do this to avoid typing a lot 
+
+`dotnet new sln -n MyApp`
+
+` dotnet sln add src/MyConsoleApp/MyConsoleApp.fsproj `
+
+1- install mono
+follow this https://github.com/Thorium/SqlProvider/tree/master/tests/SqlProvider.Core.Tests/Postgres
+2- install f# compiler
+
+2- 
+```shell
+cd  src/MyConsoleApp
+dotnet add package System.Console
+dotnet add package System.Data.Common
+dotnet add package System.Runtime
+dotnet add package System.Runtime.Extensions
+dotnet add package System.Reflection
+dotnet add package System.Reflection.TypeExtensions
+dotnet add package System.Runtime.Serialization.Formatters
+dotnet add package System.Threading.Tasks.Extensions
+mkdir libraries
+cp
+~/.nuget/packages/system.threading.tasks.extensions/4.5.1/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll
+~/src/netcore-fsharp-boiler/src/MyConsoleApp/libraries
+cp ~/.nuget/packages/npgsql/4.0.2/lib/net451/Npgsql.dll  ~/src/netcore-fsharp-boiler/src/MyConsoleApp/libraries/
+```
+
+
+
+
+
+
 # dotnet cli
 
 init:

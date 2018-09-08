@@ -8,11 +8,27 @@
   <ItemGroup>
     <Compile Include="Program.fs" />
   </ItemGroup>
-
+  <ItemGroup><!-- Mono fix -->
+    <Reference Condition="'$(IsWindows)' != 'true' Or '$(TargetFramework)' == 'netstandard2.0'" Include="FSharp.Data.SqlProvider">
+      <HintPath>../../../bin/net451/FSharp.Data.SqlProvider.dll</HintPath>
+      <!--HintPath>../../packages/SQLProvider/lib/net451/FSharp.Data.SqlProvider.dll</HintPath-->
+    </Reference>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="4.0.2" />
     <PackageReference Include="SQLProvider" Version="1.1.50" />
     <PackageReference Include="suave" Version="2.4.3" />
+    <PackageReference Include="System.Console" Version="4.3.1" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.1" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.1" />
   </ItemGroup>
-
+  <PropertyGroup>
+    <FscToolPath>/usr/bin</FscToolPath>
+    <FscToolExe>fsharpc</FscToolExe>
+  </PropertyGroup>
 </Project>

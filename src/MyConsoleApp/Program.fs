@@ -4,6 +4,9 @@ open Suave.Successful
 open Suave.Operators
 open FSharp.Data.Sql
 
+[<Literal>]
+let resolutionPath = __SOURCE_DIRECTORY__ + "/libraries"
+
 let app = 
     path "/" >=> OK "Hello"
 
@@ -15,21 +18,21 @@ type sql = SqlDataProvider<
               DatabaseVendor = Common.DatabaseProviderTypes.POSTGRESQL,
               IndividualsAmount = 1000,
               UseOptionTypes = true >
-let ctx = sql.GetDataContext()
+(*let ctx = sql.GetDataContext()*)
 
 
-let leaf = 
+(*let leaf = *)
 
-    query {
-         for l in ctx.Public.Leaf do
-             select l
-             }
-    |> Seq.toArray
+    (*query {*)
+         (*for l in ctx.Public.Leaf do*)
+             (*select l*)
+             (*}*)
+    (*|> Seq.toArray*)
 
 
-[<EntryPoint>]
 [<EntryPoint>]
 let main _ =
     printfn "Hello World from F#!"
+    printfn  "%s" resolutionPath
     startWebServer defaultConfig app
     0 // return an integer exit code
